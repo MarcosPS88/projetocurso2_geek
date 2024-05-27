@@ -6,7 +6,7 @@ def index(request):
 
 
 def contato(request):
-    return render(request, 'contaot.html')
+    return render(request, 'contato.html')
 
 
 def produto(request):

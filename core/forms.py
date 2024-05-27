@@ -28,5 +28,10 @@ class ContatoForm(forms.Form):
 
 class ProdutoModelForm(forms.ModelForm):
     class Meta:
-        ...
+        model = Produto
+        fields = ['nome',
+                  'preco',
+                  'estoque',
+                  'imagem']
+
 

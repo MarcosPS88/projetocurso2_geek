@@ -8,6 +8,10 @@
 </head>
 <body>
     <div class="container">
+        {% bootstrap_css %}
+
+       <a href="{% url 'logout' %}">Logout</a>
+
         <h1>Produto</h1>
         {% bootstrap_messages %}
         <form action="{% url 'produto' %}" method="POST" class="form" autocomplete="off" enctype="multipart/form-data" >

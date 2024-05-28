@@ -1,10 +1,65 @@
+{% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Index</h1>
+
+    <div class="container">
+        {% bootstrap_messages %}
+        <h1>Produtos</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                     <th scope="col">Produto</th>
+                     <th scope="col">Preço</th>
+                     <th scope="col">Estoque</th>
+                 </tr>
+            </thead>
+            <tbody>
+                {%for produto in produtos%}
+                    <tr>
+                        <th scope="row">{{ produto.id}} </th>
+                        <th scope="row">
+                            <a href="#modal{{produto.id}}" data-toggle="modal">
+                            {{ produto.nome}}
+                            </a>
+                        </th>
+                        <th scope="row">{{ produto.preco}} </th>
+                        <th scope="row">{{ produto.estoque}} </th>
+                    </tr>
+
+                <div class="modal fade bd-example-modal-lg show" id="modal{{produto.id}}" role="dialog">
+                   <div class="modal-dialog">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <button type="button" class="close" data-dismiss="modal">
+                                   <span aria-hidden="true">&times;</span>
+                               </button>
+                           </div>
+                           <div class="modal-body" id="dynamic-content">
+                               <center>
+                                   <h2> {{ produto.nome }}</h2>
+                               </center>
+                               <img src="{{ produto.imagem.url }}" class="img-fluid" alt="{{ produto.nome }}">
+                               <br><br>
+                               <center>
+                                   <h2> R${{ produto.preco }}</h2>
+                               </center>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+                {% endfor%}
+         </tbody>
+        </table>
+    </div>
+{% bootstrap_javascript jquery='full' %}
 </body>
 </html>

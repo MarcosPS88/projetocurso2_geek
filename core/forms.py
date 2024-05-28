@@ -34,4 +34,3 @@ class ProdutoModelForm(forms.ModelForm):
                   'estoque',
                   'imagem']
 
-
